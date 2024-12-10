@@ -83,7 +83,7 @@ means, I do not understand everything here...). Learnt that from the 'building t
 be adapted if you have a 100t instead of 35t.
 ```
 $ cd nextpnr-xilinx
-$ python3 xilinx/python/bbaexport.py --device xc7a35tcsg324-1 --bba xilinx/xc7a35t.bba
+$ python3 xilinx/python/bbaexport.py --device xc7a100tftg256-3 --bba xilinx/xc7a100tftg256.bba
 $ build/bba/bbasm --l xilinx/xc7a35t.bba xilinx/xc7a35t.bin
 $ sudo mkdir -p /usr/share/nextpnr/xilinx-chipdb
 $ sudo cp xilinx/xc7a35t.bin /usr/share/nextpnr/xilinx-chipdb/
