@@ -21,12 +21,13 @@ Install prerequisites:
 $ sudo apt-get install build-essential clang bison flex \
   libreadline-dev gawk tcl-dev libffi-dev git \
   graphviz xdot pkg-config python3 libboost-system-dev \
-  libboost-python-dev libboost-filesystem-dev zlib1g-dev
+  libboost-python-dev libboost-filesystem-dev zlib1g-dev \
+  libboost-all-dev libeigen3-dev 
 ```
 
 If you want the GUI, you will need also to install:
 ```
-$ sudo apt-get install libboost-python1.67.0-py38 
+$ sudo apt-get install libboost-python1.67
 ```
 
 Get the sources:
@@ -36,6 +37,7 @@ $ git clone https://github.com/YosysHQ/yosys.git
 Compile and install it:
 ```
 $ cd yosys
+$ git submodule update --init
 $ make
 $ sudo make install
 ```
@@ -53,14 +55,12 @@ Follow the README from [prjxray](https://github.com/SymbiFlow/prjxray).
 ```
 $ git clone https://github.com/SymbiFlow/prjxray.git
 $ cd prjxray
-$ export PRJXRAY=`pwd`
-$ git submodule update --init --recursive
-$ make build
-$ sudo python3 $PRJXRAY/setup.py install
-$ sudo python3 $PRJXRAY/third_party/fasm/setup.py install
 $ ./download-latest-db.sh
 $ sudo mkdir -p /usr/share/nextpnr/
 $ sudo cp -r database /usr/share/nextpnr/prjxray-db
+
+
+
 $ sudo apt-get install python3 python3-pip python3-yaml
 ```
 
@@ -70,10 +70,8 @@ Did not manage to build it with the gui, because on my box it gives a missing sy
 ```
 $ git clone https://github.com/gatecat/nextpnr-xilinx.git
 $ cd nextpnr-xilinx
-$ git submodule init
-$ git submodule update
-$ mkdir build
-$ cd build
+$ git submodule update --init
+$ mkdir build && cd build
 $ cmake ../ -DARCH=xilinx -DBUILD_GUI=OFF -DBUILD_PYTHON=OFF 
 $ make
 $ sudo make install
@@ -86,7 +84,7 @@ be adapted if you have a 100t instead of 35t.
 ```
 $ cd nextpnr-xilinx
 $ python3 xilinx/python/bbaexport.py --device xc7a35tcsg324-1 --bba xilinx/xc7a35t.bba
-$ build/bbasm --l xilinx/xc7a35t.bba xilinx/xc7a35t.bin
+$ build/bba/bbasm --l xilinx/xc7a35t.bba xilinx/xc7a35t.bin
 $ sudo mkdir -p /usr/share/nextpnr/xilinx-chipdb
 $ sudo cp xilinx/xc7a35t.bin /usr/share/nextpnr/xilinx-chipdb/
 ```
