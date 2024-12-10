@@ -57,7 +57,8 @@ $ export PRJXRAY=`pwd`
 $ git submodule update --init --recursive
 $ make build
 $ sudo python3 $PRJXRAY/setup.py install
-$ sudo python3 $PRJXRAY/third_party/fasm/setup.py install
+$ cd $PRJXRAY/third_party/fasm
+$ sudo python3 setup.py install
 $ ./download-latest-db.sh
 $ sudo mkdir -p /usr/share/nextpnr/
 $ sudo cp -r database /usr/share/nextpnr/prjxray-db
