@@ -58,10 +58,6 @@ $ cd prjxray
 $ ./download-latest-db.sh
 $ sudo mkdir -p /usr/share/nextpnr/
 $ sudo cp -r database /usr/share/nextpnr/prjxray-db
-
-
-
-$ sudo apt-get install python3 python3-pip python3-yaml
 ```
 
 Step 3: nextpnr-xilinx
